@@ -96,13 +96,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid md:grid-cols- lg:grid-cols-2 gap-12 text-center max-w-4xl mx-auto">
                         {features.map((feature, index) => {
                             const Icon = feature.icon;
                             return (
-                                <div key={index} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
+                                <div key={index} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 items-center flex flex-col justify-center space-y-4">
                                     <div className="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                                        <Icon className="h-6 w-6 text-blue-600" />
+                                        <Icon className="h-6 w-6 text-blue-600 " />
                                     </div>
                                     <h3 className="text-xl font-semibold text-gray-900 mb-2">
                                         {feature.title}
@@ -122,7 +122,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                            Hvordan det funker
+                            Hvordan funker det?
                         </h2>
                     </div>
 
@@ -135,7 +135,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
                                 Legg ut ditt oppdrag
                             </h3>
                             <p className="text-gray-600">
-                                Beskriv hva du trenger hjelp med, sett loasjonen, og velg om du vil betale eller tilby det gratis.
+                                Beskriv hva du trenger hjelp med, sett lokasjonen, og velg om du vil betale eller tilby det gratis.
                             </p>
                         </div>
 
@@ -167,7 +167,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
             </div>
 
             {/* CTA Section */}
-            <div className="bg-gradient-to-r from-blue-600 to-green-600 py-16">
+            <div className="bg-gradient-to-r from-blue-500 to-pink-900 py-16">
                 <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
                     <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                         Klar for å medle deg inn?
