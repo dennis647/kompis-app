@@ -3,7 +3,7 @@ import { Star, MapPin, Calendar, Award, Settings, Edit3 } from 'lucide-react';
 import { mockUsers, mockMissions } from '../data/mockData';
 
 const Profile: React.FC = () => {
-    const currentUser = mockUsers[0]; // Assume current user is Emma
+    const currentUser = mockUsers[3]; // Assume current user is Emma
     const userMissions = mockMissions.filter(mission => mission.creator.id === currentUser.id);
     const completedMissions = userMissions.filter(mission => mission.status === 'completed');
 
@@ -11,7 +11,7 @@ const Profile: React.FC = () => {
         { label: 'Missions Created', value: userMissions.length },
         { label: 'Completed', value: completedMissions.length },
         { label: 'Rating', value: currentUser.rating },
-        { label: 'Total Earned', value: '2,450 SEK' }
+        { label: 'Total Earned', value: '2,450 NOK' }
     ];
 
     return (

@@ -12,7 +12,7 @@ export interface Mission {
     id: string;
     title: string;
     description: string;
-    category: 'moving' | 'shopping' | 'disposal' | 'delivery' | 'cleaning' | 'other';
+    category: 'flytting' | 'handel' | 'kast' | 'levering' | 'vasking' | 'annet';
     location: {
         address: string;
         lat: number;

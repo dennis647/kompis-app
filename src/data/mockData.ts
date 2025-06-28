@@ -1,4 +1,5 @@
 import { User, Mission, Bid, ChatMessage } from '../types';
+import dennisAvatar from '../img/dennis.jpg';
 
 export const mockUsers: User[] = [
     {
@@ -27,6 +28,15 @@ export const mockUsers: User[] = [
         rating: 4.7,
         completedJobs: 32,
         location: 'Malmö, Sweden'
+    },
+    {
+        id: '3',
+        name: 'Dennis Jacob Brokking',
+        email: 'dennis@example.com',
+        avatar: dennisAvatar,
+        rating: 4.7,
+        completedJobs: 22,
+        location: 'Oslo, Norge'
     }
 ];
 
@@ -35,7 +45,7 @@ export const mockMissions: Mission[] = [
         id: '1',
         title: 'Help move furniture to new apartment',
         description: 'Need help moving a couch, dining table, and some boxes from my current place to my new apartment. About 2km distance. I have a van, just need an extra pair of hands.',
-        category: 'moving',
+        category: 'flytting',
         location: {
             address: 'Östermalm, Stockholm',
             lat: 59.3293,
@@ -56,7 +66,7 @@ export const mockMissions: Mission[] = [
         id: '2',
         title: 'Grocery shopping for elderly neighbor',
         description: 'My neighbor is 85 and needs someone to do her weekly grocery shopping. She has a list ready and will pay for all groceries. Just need someone kind to help out.',
-        category: 'shopping',
+        category: 'handel',
         location: {
             address: 'Södermalm, Stockholm',
             lat: 59.3181,
@@ -77,7 +87,7 @@ export const mockMissions: Mission[] = [
         id: '3',
         title: 'Free books and magazines',
         description: 'I have a collection of Swedish books and magazines that I need to give away. Fiction, non-fiction, and some design magazines. Perfect for book lovers!',
-        category: 'other',
+        category: 'annet',
         location: {
             address: 'Vasastan, Stockholm',
             lat: 59.3426,
@@ -94,11 +104,11 @@ export const mockMissions: Mission[] = [
     },
     {
         id: '4',
-        title: 'Dispose of old electronics',
-        description: 'Have some old computers, printers, and cables that need proper disposal at recycling center. Will provide transportation, just need help carrying and sorting.',
-        category: 'disposal',
+        title: 'Kast av elektronik',
+        description: 'Har noen gamle datamaskiner, printere og kabler som trengs å kastes på resirkulerings senter. Jeg stiller med transport, trenger bare hjelp med bæring og sortering.',
+        category: 'kast',
         location: {
-            address: 'Bromma, Stockholm',
+            address: 'Høvik, Bærum',
             lat: 59.3538,
             lng: 17.9394
         },
@@ -106,10 +116,10 @@ export const mockMissions: Mission[] = [
             type: 'paid',
             amount: 400
         },
-        creator: mockUsers[0],
-        status: 'assigned',
-        createdAt: '2025-01-25T12:00:00Z',
-        deadline: '2025-01-29T17:00:00Z',
+        creator: mockUsers[3],
+        status: 'open',
+        createdAt: '2025-06-25T12:00:00Z',
+        deadline: '2025-07-29T17:00:00Z',
         bids: [],
         assignedTo: mockUsers[1]
     }
@@ -135,6 +145,16 @@ export const mockBids: Bid[] = [
         estimatedTime: '2.5 hours',
         createdAt: '2025-01-27T11:30:00Z',
         status: 'pending'
+    },
+    {
+        id: '3',
+        missionId: '4',
+        bidder: mockUsers[2],
+        amount: 250,
+        message: 'Jeg er tilgjenglig imorgen! Jeg har hjulpet flere kaste og sortere slikt avfall før. :).',
+        estimatedTime: '2.5 timer',
+        createdAt: '2025-06-27T11:30:00Z',
+        status: 'accepted'
     }
 ];
 

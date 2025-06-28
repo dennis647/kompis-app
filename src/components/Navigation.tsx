@@ -33,7 +33,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentView, onViewChange }) =>
                     </div>
 
                     <div className="hidden md:block">
-                        <div className="ml-10 flex items-center space-x-4">
+                        <div className="mr-4 flex items-center space-x-4">
                             {navItems.map((item) => {
                                 const Icon = item.icon;
                                 return (

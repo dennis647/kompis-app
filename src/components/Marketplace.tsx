@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {  Search, MapPin, Clock, Euro, Gift, Star } from 'lucide-react';
+import {  Search, MapPin, Clock, Star } from 'lucide-react';
 import { Mission } from '../types';
 import { mockMissions } from '../data/mockData';
 
@@ -13,13 +13,13 @@ const Marketplace: React.FC<MarketplaceProps> = ({ onMissionClick }) => {
     const [paymentFilter, setPaymentFilter] = useState('all');
 
     const categories = [
-        { id: 'all', label: 'All Categories' },
-        { id: 'moving', label: 'Moving & Transport' },
-        { id: 'shopping', label: 'Shopping & Errands' },
-        { id: 'disposal', label: 'Disposal & Recycling' },
-        { id: 'delivery', label: 'Delivery' },
-        { id: 'cleaning', label: 'Cleaning' },
-        { id: 'other', label: 'Other' }
+        { id: 'all', label: 'Alle kategorier' },
+        { id: 'flytting', label: 'Flytt & transport' },
+        { id: 'handel', label: 'Shopping & ærender' },
+        { id: 'kast', label: 'Kast & resirukerling' },
+        { id: 'levering', label: 'Levering' },
+        { id: 'vasking', label: 'Vasking' },
+        { id: 'annet', label: 'Annet' }
     ];
 
     const filteredMissions = mockMissions.filter(mission => {
@@ -34,11 +34,11 @@ const Marketplace: React.FC<MarketplaceProps> = ({ onMissionClick }) => {
 
     const getCategoryIcon = (category: string) => {
         switch (category) {
-            case 'moving': return '📦';
-            case 'shopping': return '🛒';
-            case 'disposal': return '♻️';
-            case 'delivery': return '🚚';
-            case 'cleaning': return '🧹';
+            case 'flytting': return '📦';
+            case 'handel': return '🛒';
+            case 'kast': return '♻️';
+            case 'levering': return '🚚';
+            case 'vasking': return '🧹';
             default: return '✨';
         }
     };
@@ -48,9 +48,9 @@ const Marketplace: React.FC<MarketplaceProps> = ({ onMissionClick }) => {
         const date = new Date(dateString);
         const diffInHours = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60));
 
-        if (diffInHours < 1) return 'Just now';
-        if (diffInHours < 24) return `${diffInHours}h ago`;
-        return `${Math.floor(diffInHours / 24)}d ago`;
+        if (diffInHours < 1) return 'Akkurat nå';
+        if (diffInHours < 24) return `${diffInHours}t siden`;
+        return `${Math.floor(diffInHours / 24)}d siden`;
     };
 
     return (
@@ -104,7 +104,7 @@ const Marketplace: React.FC<MarketplaceProps> = ({ onMissionClick }) => {
                 </div>
 
                 {/* Mission Grid */}
-                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-3">
                     {filteredMissions.map((mission) => (
                         <div
                             key={mission.id}
@@ -123,13 +123,11 @@ const Marketplace: React.FC<MarketplaceProps> = ({ onMissionClick }) => {
                                     <div className="flex items-center space-x-1">
                                         {mission.payment.type === 'paid' ? (
                                             <span className="bg-green-100 text-green-800 text-sm font-medium px-2 py-1 rounded-full flex items-center">
-                        <Euro className="h-3 w-3 mr-1" />
                                                 {mission.payment.amount} NOK
                       </span>
                                         ) : (
                                             <span className="bg-blue-100 text-blue-800 text-sm font-medium px-2 py-1 rounded-full flex items-center">
-                        <Gift className="h-3 w-3 mr-1" />
-                        Free
+                        Gratis
                       </span>
                                         )}
                                     </div>
@@ -153,7 +151,7 @@ const Marketplace: React.FC<MarketplaceProps> = ({ onMissionClick }) => {
                                 {mission.deadline && (
                                     <div className="flex items-center text-sm text-gray-500 mb-3">
                                         <Clock className="h-4 w-4 mr-1" />
-                                        <span>Deadline: {new Date(mission.deadline).toLocaleDateString()}</span>
+                                        <span>Tidsfrist: {new Date(mission.deadline).toLocaleDateString()}</span>
                                     </div>
                                 )}
                             </div>
