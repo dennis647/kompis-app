@@ -1,12 +1,14 @@
 import React from 'react';
 import { Home, Search, PlusCircle, MessageCircle, User, Map } from 'lucide-react';
 
+
 interface NavigationProps {
     currentView: string;
     onViewChange: (view: string) => void;
 }
 
 const Navigation: React.FC<NavigationProps> = ({ currentView, onViewChange }) => {
+
     const navItems = [
         { id: 'home', label: 'Hjem', icon: Home },
         { id: 'marketplace', label: 'Oppdarg', icon: Search },
@@ -22,10 +24,11 @@ const Navigation: React.FC<NavigationProps> = ({ currentView, onViewChange }) =>
                 <div className="flex justify-between items-center h-16">
                     <div className="flex items-center">
                         <div className="flex-shrink-0 flex items-center">
-                            <div className="bg-blue-600 text-white rounded-lg p-2 mr-3">
-                                <Home className="h-6 w-6" />
-                            </div>
-                            <span className="text-2xl font-bold text-gray-900">Kompis</span>
+                            <button
+                                id="hjem"
+                                onClick={() => onViewChange('home')}
+                                className="text-2xl font-bold text-blue-500 hover:text-blue-700 focus:outline-none">Kompis
+                            </button>
                         </div>
                     </div>
 
