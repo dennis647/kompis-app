@@ -9,31 +9,31 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
     const features = [
         {
             icon: Users,
-            title: 'Community Driven',
-            description: 'Connect with helpful neighbors and build stronger communities through mutual assistance.'
+            title: 'Skapt for samfunnet',
+            description: 'Koble deg sammen med andre og bygg ett sterkere samfunn gjennom gjensidig assitanse.'
         },
         {
             icon: Shield,
-            title: 'Safe & Secure',
-            description: 'All users are verified and rated. Your safety and trust are our top priorities.'
+            title: 'Trygt & sikkert',
+            description: 'Alle brukerene er verifisert. Din trygghet og tillit er våres høyeste prioriteringer.'
         },
         {
             icon: Clock,
-            title: 'Quick & Easy',
-            description: 'Post a mission in minutes and get help when you need it most.'
+            title: 'Kjapt og enkelt',
+            description: 'Legg ut ett oppdrag på minutter og få hjelp når du trenger det mest.'
         },
         {
             icon: Star,
-            title: 'Quality Service',
-            description: 'Our rating system ensures you get the best help from experienced community members.'
+            title: 'Kvalitet service',
+            description: 'Våres rangering system passer på at du får den beste hjelpen av våre erfarne medlemmer.'
         }
     ];
 
     const stats = [
-        { number: '10,000+', label: 'Happy Users' },
-        { number: '50,000+', label: 'Completed Missions' },
-        { number: '4.9/5', label: 'Average Rating' },
-        { number: '24/7', label: 'Support' }
+        { number: '1,000+', label: 'Fornøyde brukere' },
+        { number: '25,000+', label: 'Fullførte oppdrag' },
+        { number: '4.9/5', label: 'Gjenomsnittlig vurdering' },
+        { number: '24/7', label: 'Kundestøtte' }
     ];
 
     return (
@@ -42,26 +42,26 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
             <div className="relative overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
                     <div className="text-center">
-                        <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-                            Your Local <span className="text-blue-600">Helper</span> Network
+                        <h1 className="text-6xl font-bold text-gray-900 mb-10">
+                            <span className="text-blue-900">Kompis</span>
                         </h1>
                         <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                            Need help with everyday tasks? Want to help others? Kompis connects neighbors
-                            to make life easier for everyone in your community.
+                            Trenger du hjelp med hverdagen? Vil du hjelpe andre?
+                            Kompis kobler alle sammen for å gjøre det lettere for alle i samfunnet.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                             <button
                                 onClick={onGetStarted}
                                 className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors duration-200 flex items-center space-x-2 shadow-lg hover:shadow-xl"
                             >
-                                <span>Get Started</span>
+                                <span>Kom i gang</span>
                                 <ArrowRight className="h-5 w-5" />
                             </button>
                             <button
                                 onClick={onGetStarted}
                                 className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg text-lg font-semibold hover:border-gray-400 transition-colors duration-200"
                             >
-                                Browse Missions
+                                Tilgjenglige oppdrag
                             </button>
                         </div>
                     </div>
@@ -89,10 +89,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                            Why Choose Kompis?
+                            Hvorfor skal du velge Kompis?
                         </h2>
                         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                            We make it simple and safe to get help with your daily tasks
+                            Vi gjør det lettere og tryggere for deg å få hjelp med dine daglige oppgaver.
                         </p>
                     </div>
 
@@ -122,7 +122,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                            How It Works
+                            Hvordan det funker
                         </h2>
                     </div>
 
@@ -132,10 +132,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
                                 1
                             </div>
                             <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                                Post Your Mission
+                                Legg ut ditt oppdrag
                             </h3>
                             <p className="text-gray-600">
-                                Describe what you need help with, set your location, and choose if you want to pay or offer it for free.
+                                Beskriv hva du trenger hjelp med, sett loasjonen, og velg om du vil betale eller tilby det gratis.
                             </p>
                         </div>
 
@@ -144,10 +144,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
                                 2
                             </div>
                             <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                                Get Bids
+                                Få bud
                             </h3>
                             <p className="text-gray-600">
-                                Helpful community members will bid on your mission with their time estimates and rates.
+                                Hjelpfulle medlemmer kan by på oppdraget ditt med pris og tid estemat.
                             </p>
                         </div>
 
@@ -156,10 +156,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
                                 3
                             </div>
                             <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                                Get Help
+                                Få hjelp
                             </h3>
                             <p className="text-gray-600">
-                                Choose the best bid, chat with your helper, and get your mission completed safely.
+                                Velg det beste budet, snakk med din hjelper, og få oppdraget ditt trygt utført.
                             </p>
                         </div>
                     </div>
@@ -170,16 +170,16 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
             <div className="bg-gradient-to-r from-blue-600 to-green-600 py-16">
                 <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
                     <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                        Ready to Get Started?
+                        Klar for å medle deg inn?
                     </h2>
                     <p className="text-xl text-blue-100 mb-8">
-                        Join thousands of helpful neighbors making life easier for everyone
+                        Bli med tusenvis av hjelpfulle medlemmer i samfunnet for å gjøre det lettere for alle.
                     </p>
                     <button
                         onClick={onGetStarted}
                         className="bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors duration-200 shadow-lg hover:shadow-xl"
                     >
-                        Join Kompis Today
+                        Bli med i Kompis idag
                     </button>
                 </div>
             </div>

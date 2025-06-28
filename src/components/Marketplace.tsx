@@ -58,8 +58,8 @@ const Marketplace: React.FC<MarketplaceProps> = ({ onMissionClick }) => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 {/* Header */}
                 <div className="mb-8">
-                    <h1 className="text-3xl font-bold text-gray-900 mb-2">Available Missions</h1>
-                    <p className="text-gray-600">Help your neighbors and earn while doing good</p>
+                    <h1 className="text-3xl font-bold text-gray-900 mb-2">Tilgjengelige oppdarg</h1>
+                    <p className="text-gray-600">Hjelp de i samfunnet og tjen på å gjøre noe bra</p>
                 </div>
 
                 {/* Search and Filters */}
@@ -70,7 +70,7 @@ const Marketplace: React.FC<MarketplaceProps> = ({ onMissionClick }) => {
                             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
                             <input
                                 type="text"
-                                placeholder="Search missions..."
+                                placeholder="Søk oppdrag..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -96,9 +96,9 @@ const Marketplace: React.FC<MarketplaceProps> = ({ onMissionClick }) => {
                             onChange={(e) => setPaymentFilter(e.target.value)}
                             className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         >
-                            <option value="all">All Payments</option>
-                            <option value="paid">Paid</option>
-                            <option value="free">Free</option>
+                            <option value="all">Alle betalinger</option>
+                            <option value="paid">Betalt</option>
+                            <option value="free">Gratis</option>
                         </select>
                     </div>
                 </div>
@@ -124,7 +124,7 @@ const Marketplace: React.FC<MarketplaceProps> = ({ onMissionClick }) => {
                                         {mission.payment.type === 'paid' ? (
                                             <span className="bg-green-100 text-green-800 text-sm font-medium px-2 py-1 rounded-full flex items-center">
                         <Euro className="h-3 w-3 mr-1" />
-                                                {mission.payment.amount} SEK
+                                                {mission.payment.amount} NOK
                       </span>
                                         ) : (
                                             <span className="bg-blue-100 text-blue-800 text-sm font-medium px-2 py-1 rounded-full flex items-center">
@@ -191,8 +191,8 @@ const Marketplace: React.FC<MarketplaceProps> = ({ onMissionClick }) => {
                 {filteredMissions.length === 0 && (
                     <div className="text-center py-12">
                         <div className="text-gray-400 text-6xl mb-4">🔍</div>
-                        <h3 className="text-xl font-medium text-gray-900 mb-2">No missions found</h3>
-                        <p className="text-gray-600">Try adjusting your search or filters</p>
+                        <h3 className="text-xl font-medium text-gray-900 mb-2">Ingen oppdrag funnet</h3>
+                        <p className="text-gray-600">Prøv å endre ditt søk</p>
                     </div>
                 )}
             </div>

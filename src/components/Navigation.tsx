@@ -8,12 +8,12 @@ interface NavigationProps {
 
 const Navigation: React.FC<NavigationProps> = ({ currentView, onViewChange }) => {
     const navItems = [
-        { id: 'home', label: 'Home', icon: Home },
-        { id: 'marketplace', label: 'Missions', icon: Search },
-        { id: 'create', label: 'Create', icon: PlusCircle },
-        { id: 'chat', label: 'Messages', icon: MessageCircle },
-        { id: 'map', label: 'Map', icon: Map },
-        { id: 'profile', label: 'Profile', icon: User },
+        { id: 'home', label: 'Hjem', icon: Home },
+        { id: 'marketplace', label: 'Oppdarg', icon: Search },
+        { id: 'create', label: 'Opprett', icon: PlusCircle },
+        { id: 'chat', label: 'Meldinger', icon: MessageCircle },
+        { id: 'map', label: 'Kart', icon: Map },
+        { id: 'profile', label: 'Profil', icon: User },
     ];
 
     return (
