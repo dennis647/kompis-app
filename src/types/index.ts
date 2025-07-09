@@ -43,10 +43,11 @@ export interface Bid {
 
 export interface ChatMessage {
     id: string;
-    missionId: string;
     senderId: string;
-    senderName: string;
     message: string;
     timestamp: string;
+    missionTitle: string;
+    missionStatus: string;
+    missionLocation: string;
     type: 'text' | 'image' | 'location';
 }

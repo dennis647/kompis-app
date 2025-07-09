@@ -8,6 +8,10 @@ type ChatMessages = {
         senderId: string;
         message: string;
         timestamp: string;
+        missionTitle: string;
+        missionStatus: string;
+        missionLocation: string;
+
     }[];
 };
 
@@ -216,12 +220,18 @@ export const mockChats: ChatMessages = { //m1 = message 1
             senderId: '1',
             message: 'Hey Alex, how are things going?',
             timestamp: '2025-06-28T10:15:00Z',
+            missionTitle: 'Flytting',
+            missionStatus: 'Under behandling',
+            missionLocation: 'Oslo, Norge',
         },
         {
             id: 'm2',
             senderId: '2',
             message: 'All good, thanks for asking!',
             timestamp: '2025-06-28T10:16:00Z',
+            missionTitle: 'Flytting',
+            missionStatus: 'Under behandling',
+            missionLocation: 'Oslo, Norge',
         },
     ],
     '3': [
@@ -230,12 +240,18 @@ export const mockChats: ChatMessages = { //m1 = message 1
             senderId: '3',
             message: 'Can you help me later today?',
             timestamp: '2025-06-28T09:00:00Z',
+            missionTitle: 'Kast',
+            missionStatus: 'Under behandling',
+            missionLocation: 'Bergen, Norge',
         },
         {
             id: 'm4',
             senderId: '1',
             message: 'Of course, Sofia!',
             timestamp: '2025-06-28T09:05:00Z',
+            missionTitle: 'Kast',
+            missionStatus: 'Under behandling',
+            missionLocation: 'Bergen, Norge',
         },
     ],
     '4': [
@@ -244,12 +260,18 @@ export const mockChats: ChatMessages = { //m1 = message 1
             senderId: '4',
             message: 'Don’t forget the tools.',
             timestamp: '2025-06-27T17:30:00Z',
+            missionTitle: 'Handel',
+            missionStatus: 'Fullført',
+            missionLocation: 'Flesberg, Norge',
         },
         {
             id: 'm6',
             senderId: '1',
             message: 'Got it, see you soon!',
             timestamp: '2025-06-27T17:31:00Z',
+            missionTitle: 'Handel',
+            missionStatus: 'Fullført',
+            missionLocation: 'Flesberg, Norge',
         },
     ],
     '5': [
@@ -258,12 +280,18 @@ export const mockChats: ChatMessages = { //m1 = message 1
             senderId: '5',
             message: 'Hei Emma! Når kan jeg hente denne?',
             timestamp: '2025-06-28T10:15:00Z',
+            missionTitle: 'Annet',
+            missionStatus: 'Fullført',
+            missionLocation: 'Molde, Norge',
         },
         {
             id: 'm8',
             senderId: '1',
             message: 'Når enn det passer deg!',
             timestamp: '2025-06-28T10:16:00Z',
+            missionTitle: 'Annet',
+            missionStatus: 'Fullført',
+            missionLocation: 'Molde, Norge',
         },
     ],
 };
