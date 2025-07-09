@@ -1,23 +1,21 @@
 import React, { useState } from 'react';
 import { Send, ArrowLeft, Phone, Video, MoreVertical } from 'lucide-react';
-import { ChatMessage } from '../types';
-import { mockChatMessages, mockUsers } from '../data/mockData';
+import { ChatMessage, User } from '../types';
 
 interface ChatProps {
     onBack: () => void;
+    currentUser: User;
+    otherUser: User;
+    messages: ChatMessage[];
 }
 
-const Chat: React.FC<ChatProps> = ({ onBack }) => {
+const Chat: React.FC<ChatProps> = ({ onBack, currentUser, otherUser, messages }) => {
     const [newMessage, setNewMessage] = useState('');
-    const [messages] = useState<ChatMessage[]>(mockChatMessages);
-
-    const currentUser = mockUsers[0]; // Assume current user is Emma
-    const otherUser = mockUsers[1]; // Alex
 
     const handleSendMessage = (e: React.FormEvent) => {
         e.preventDefault();
         if (newMessage.trim()) {
-            // Here you would typically send the message to your backend
+            // Normally you’d update the message list here
             console.log('Sending message:', newMessage);
             setNewMessage('');
         }

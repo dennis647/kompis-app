@@ -1,28 +1,31 @@
 import React, { useState } from 'react';
-import Chat from './Chat'; // Import your provided Chat component
-import { mockUsers } from '../data/mockData';
+import Chat from './Chat';
+import { mockUsers, mockChats } from '../data/mockData';
+import { ChatMessage, User } from '../types';
 
 const ChatHub: React.FC = () => {
-    const [selectedChatId, setSelectedChatId] = useState<string | null>(null);
+    const [selectedUser, setSelectedUser] = useState<User | null>(null);
 
-    const handleSelectChat = (userId: string) => {
-        setSelectedChatId(userId);
+    const currentUser = mockUsers[0]; // Emma
+
+    const handleSelectChat = (user: User) => {
+        setSelectedUser(user);
     };
 
     const handleBack = () => {
-        setSelectedChatId(null);
+        setSelectedUser(null);
     };
 
     return (
         <div className="min-h-screen bg-gray-100 pt-16 pb-20">
-            {!selectedChatId ? (
+            {!selectedUser ? (
                 <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                     <h2 className="text-2xl font-semibold mb-4">Meldinger</h2>
                     <div className="bg-white shadow rounded-lg divide-y divide-gray-200">
                         {mockUsers.slice(1).map((user) => (
                             <button
                                 key={user.id}
-                                onClick={() => handleSelectChat(user.id)}
+                                onClick={() => handleSelectChat(user)}
                                 className="w-full text-left px-4 py-4 hover:bg-gray-50 flex items-center space-x-4"
                             >
                                 <img
@@ -32,14 +35,20 @@ const ChatHub: React.FC = () => {
                                 />
                                 <div>
                                     <p className="font-medium text-gray-900">{user.name}</p>
-                                    <p className="text-sm text-gray-500">Trykk for å åpne melding</p>
+                                    <p className="text-sm text-gray-500">Klikk for å åpne chat</p>
                                 </div>
                             </button>
                         ))}
                     </div>
                 </div>
             ) : (
-                <Chat onBack={handleBack} />
+                <Chat
+                    onBack={handleBack}
+                    currentUser={currentUser}
+                    otherUser={selectedUser}
+                    messages={(mockChats[selectedUser.id] as ChatMessage[])
+                        || []}
+                />
             )}
         </div>
     );

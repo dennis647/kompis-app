@@ -1,5 +1,16 @@
 import { User, Mission, Bid, ChatMessage } from '../types';
 import dennisAvatar from '../img/dennis.jpg';
+import newUser from'../img/newuser.jpg';
+
+type ChatMessages = {
+    [key: string]: {
+        id: string;
+        senderId: string;
+        message: string;
+        timestamp: string;
+    }[];
+};
+
 
 export const mockUsers: User[] = [
     {
@@ -30,13 +41,22 @@ export const mockUsers: User[] = [
         location: 'Malmö, Sweden'
     },
     {
-        id: '3',
+        id: '4',
         name: 'Dennis Jacob Brokking',
         email: 'dennis@example.com',
         avatar: dennisAvatar,
         rating: 4.7,
         completedJobs: 22,
         location: 'Oslo, Norge'
+    },
+    {
+        id: '5',
+        name: 'Ola Normann',
+        email: 'Ola@example.com',
+        avatar: newUser,
+        rating: 4.0,
+        completedJobs: 21,
+        location: 'Bergen, Norge'
     }
 ];
 
@@ -187,3 +207,63 @@ export const mockChatMessages: ChatMessage[] = [
         type: 'text'
     }
 ];
+
+export const mockChats: ChatMessages = { //m1 = message 1
+
+    '2': [
+        {
+            id: 'm1',
+            senderId: '1',
+            message: 'Hey Alex, how are things going?',
+            timestamp: '2025-06-28T10:15:00Z',
+        },
+        {
+            id: 'm2',
+            senderId: '2',
+            message: 'All good, thanks for asking!',
+            timestamp: '2025-06-28T10:16:00Z',
+        },
+    ],
+    '3': [
+        {
+            id: 'm3',
+            senderId: '3',
+            message: 'Can you help me later today?',
+            timestamp: '2025-06-28T09:00:00Z',
+        },
+        {
+            id: 'm4',
+            senderId: '1',
+            message: 'Of course, Sofia!',
+            timestamp: '2025-06-28T09:05:00Z',
+        },
+    ],
+    '4': [
+        {
+            id: 'm5',
+            senderId: '4',
+            message: 'Don’t forget the tools.',
+            timestamp: '2025-06-27T17:30:00Z',
+        },
+        {
+            id: 'm6',
+            senderId: '1',
+            message: 'Got it, see you soon!',
+            timestamp: '2025-06-27T17:31:00Z',
+        },
+    ],
+    '5': [
+        {
+            id: 'm7',
+            senderId: '5',
+            message: 'Hei Emma! Når kan jeg hente denne?',
+            timestamp: '2025-06-28T10:15:00Z',
+        },
+        {
+            id: 'm8',
+            senderId: '1',
+            message: 'Når enn det passer deg!',
+            timestamp: '2025-06-28T10:16:00Z',
+        },
+    ],
+};
