@@ -65,7 +65,7 @@ function App() {
 
     return (
         <div className="min-h-screen bg-gray-50">
-            {currentView !== 'home' && (
+            {currentView && (
                 <Navigation currentView={currentView} onViewChange={handleViewChange} />
             )}
             {renderCurrentView()}
