@@ -3,9 +3,10 @@ import { ArrowRight, Users, Shield, Clock, Star } from 'lucide-react';
 
 interface LandingPageProps {
     onGetStarted: () => void;
+    onMissions: () => void;
 }
 
-const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
+const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onMissions }) => {
     const features = [
         {
             icon: Users,
@@ -58,7 +59,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
                                 <ArrowRight className="h-5 w-5" />
                             </button>
                             <button
-                                onClick={onGetStarted}
+                                onClick={onMissions}
                                 className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg text-lg font-semibold hover:border-gray-400 transition-colors duration-200"
                             >
                                 Tilgjenglige oppdrag

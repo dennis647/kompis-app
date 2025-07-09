@@ -56,7 +56,9 @@ function App() {
     const renderCurrentView = () => {
         switch (currentView) {
             case 'home':
-                return <LandingPage onGetStarted={() => setCurrentView('marketplace')} />;
+                return currentUser ? <LandingPage onGetStarted={() =>setCurrentView('marketplace')} onMissions={() => setCurrentView('marketplace')}  />
+                    :
+                    <LandingPage onGetStarted={() => setCurrentView('login')} onMissions={() => setCurrentView('marketplace')} />;
             case 'marketplace':
                 return <Marketplace onMissionClick={handleMissionClick} />;
             case 'create':
