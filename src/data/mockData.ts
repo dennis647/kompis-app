@@ -1,4 +1,4 @@
-import { User, Mission, Bid, ChatMessage } from '../types';
+import { User, Mission, Bid} from '../types';
 import dennisAvatar from '../img/dennis.jpg';
 import newUser from'../img/newuser.jpg';
 
@@ -182,35 +182,6 @@ export const mockBids: Bid[] = [
     }
 ];
 
-export const mockChatMessages: ChatMessage[] = [
-    {
-        id: '1',
-        missionId: '4',
-        senderId: '1',
-        senderName: 'Emma Johnson',
-        message: 'Hi! Thanks for accepting the job. When would be a good time to start?',
-        timestamp: '2025-01-27T09:00:00Z',
-        type: 'text'
-    },
-    {
-        id: '2',
-        missionId: '4',
-        senderId: '2',
-        senderName: 'Alex Chen',
-        message: 'Hello! I can start tomorrow morning around 10 AM if that works for you?',
-        timestamp: '2025-01-27T09:15:00Z',
-        type: 'text'
-    },
-    {
-        id: '3',
-        missionId: '4',
-        senderId: '1',
-        senderName: 'Emma Johnson',
-        message: 'Perfect! I\'ll have everything ready. The address is Bromma Recycling Center.',
-        timestamp: '2025-01-27T09:20:00Z',
-        type: 'text'
-    }
-];
 
 export const mockChats: ChatMessages = { //m1 = message 1
 

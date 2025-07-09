@@ -53,7 +53,7 @@ function App() {
                     />
                 ) : null;
             case 'chat':
-                return <Chat onBack={handleBack} />;
+                return <Chat />;
             case 'map':
                 return <MapView onMissionClick={handleMissionClick} />;
             case 'profile':
