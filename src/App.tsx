@@ -4,7 +4,7 @@ import LandingPage from './components/LandingPage';
 import Marketplace from './components/Marketplace';
 import CreateMission from './components/CreateMission';
 import MissionDetail from './components/MissionDetail';
-import Chat from './components/Chat';
+import Chat from './components/ChatHub';
 import MapView from './components/MapView';
 import Profile from './components/Profile';
 import { Mission } from './types';
