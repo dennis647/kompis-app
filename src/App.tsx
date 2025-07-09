@@ -69,19 +69,23 @@ function App() {
                 ) : null;
             case 'chat':
                 // @ts-ignore
-                return currentUser ? <ChatHub currentUser={currentUser} /> : <LandingPage onGetStarted={() => setCurrentView('marketplace')} />;
+                return currentUser ? <ChatHub currentUser={currentUser} /> : <Login onLogin={handleLogin} />;
             case 'map':
                 return <MapView onMissionClick={handleMissionClick} />;
             case 'profile':
                 return currentUser ? (
                     <Profile currentUser={currentUser} onLogout={handleLogout} />
                 ) : (
-                    <LandingPage onGetStarted={() => setCurrentView('marketplace')} />
+                    <LandingPage onGetStarted={() => setCurrentView('marketplace')} onMissions={function (): void {
+                        throw new Error('Function not implemented.');
+                    }} />
                 );
             case 'login':
                 return <Login onLogin={handleLogin} />;
             default:
-                return <LandingPage onGetStarted={() => setCurrentView('marketplace')} />;
+                return <LandingPage onGetStarted={() => setCurrentView('marketplace')} onMissions={function (): void {
+                    throw new Error('Function not implemented.');
+                }} />;
         }
     };
 
