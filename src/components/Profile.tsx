@@ -1,9 +1,14 @@
 import React from 'react';
-import { Star, MapPin, Calendar, Award, Settings, Edit3 } from 'lucide-react';
-import { mockUsers, mockMissions } from '../data/mockData';
+import { Star, MapPin, Calendar, Award, Settings, Edit3, LogOut } from 'lucide-react';
+import { User } from '../types';
+import { mockMissions } from '../data/mockData';
 
-const Profile: React.FC = () => {
-    const currentUser = mockUsers[3]; // Assume current user is Emma
+interface ProfileProps {
+    currentUser: User;
+    onLogout: () => void;
+}
+
+const Profile: React.FC<ProfileProps> = ({ currentUser, onLogout }) => {
     const userMissions = mockMissions.filter(mission => mission.creator.id === currentUser.id);
     const completedMissions = userMissions.filter(mission => mission.status === 'completed');
 
@@ -34,10 +39,19 @@ const Profile: React.FC = () => {
                         <div className="flex-1">
                             <div className="flex items-center justify-between mb-2">
                                 <h1 className="text-2xl font-bold text-gray-900">{currentUser.name}</h1>
-                                <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-                                    <Settings className="h-4 w-4" />
-                                    <span>Settings</span>
-                                </button>
+                                <div className="flex gap-2">
+                                    <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                                        <Settings className="h-4 w-4" />
+                                        <span>Settings</span>
+                                    </button>
+                                    <button
+                                        onClick={onLogout}
+                                        className="flex items-center space-x-2 px-4 py-2 border border-red-300 text-red-600 rounded-lg hover:bg-red-100 transition-colors"
+                                    >
+                                        <LogOut className="h-4 w-4" />
+                                        <span>Logg ut</span>
+                                    </button>
+                                </div>
                             </div>
 
                             <div className="flex items-center space-x-4 text-gray-600 mb-4">

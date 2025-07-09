@@ -4,18 +4,35 @@ import LandingPage from './components/LandingPage';
 import Marketplace from './components/Marketplace';
 import CreateMission from './components/CreateMission';
 import MissionDetail from './components/MissionDetail';
-import Chat from './components/ChatHub';
+import ChatHub from './components/ChatHub';
 import MapView from './components/MapView';
 import Profile from './components/Profile';
-import { Mission } from './types';
+import Login from './components/Login';
+
+import { Mission, User } from './types';
+import { mockUsers } from './data/mockData';
 
 function App() {
-    const [currentView, setCurrentView] = useState<string>('home');
+    const [currentView, setCurrentView] = useState<string>('home');  // Starter på hjem
     const [selectedMission, setSelectedMission] = useState<Mission | null>(null);
+    const [currentUser, setCurrentUser] = useState<User | null>(null);
 
     const handleViewChange = (view: string) => {
         setCurrentView(view);
         setSelectedMission(null);
+    };
+
+    const handleLogin = (userId: string) => {
+        const user = mockUsers.find((u) => u.id === userId);
+        if (user) {
+            setCurrentUser(user);
+            setCurrentView('home');
+        }
+    };
+
+    const handleLogout = () => {
+        setCurrentUser(null);
+        setCurrentView('home');
     };
 
     const handleMissionClick = (mission: Mission) => {
@@ -46,18 +63,21 @@ function App() {
                 return <CreateMission onMissionCreated={handleMissionCreated} />;
             case 'mission-detail':
                 return selectedMission ? (
-                    <MissionDetail
-                        mission={selectedMission}
-                        onBack={handleBack}
-                        onChat={handleChatOpen}
-                    />
+                    <MissionDetail mission={selectedMission} onBack={handleBack} onChat={handleChatOpen} />
                 ) : null;
             case 'chat':
-                return <Chat />;
+                // @ts-ignore
+                return currentUser ? <ChatHub currentUser={currentUser} /> : <LandingPage onGetStarted={() => setCurrentView('marketplace')} />;
             case 'map':
                 return <MapView onMissionClick={handleMissionClick} />;
             case 'profile':
-                return <Profile />;
+                return currentUser ? (
+                    <Profile currentUser={currentUser} onLogout={handleLogout} />
+                ) : (
+                    <LandingPage onGetStarted={() => setCurrentView('marketplace')} />
+                );
+            case 'login':
+                return <Login onLogin={handleLogin} />;
             default:
                 return <LandingPage onGetStarted={() => setCurrentView('marketplace')} />;
         }
@@ -65,9 +85,13 @@ function App() {
 
     return (
         <div className="min-h-screen bg-gray-50">
-            {currentView && (
-                <Navigation currentView={currentView} onViewChange={handleViewChange} />
-            )}
+            <Navigation
+                currentView={currentView}
+                onViewChange={handleViewChange}
+                currentUser={currentUser}
+                onLoginClick={() => setCurrentView('login')}
+                onLogout={handleLogout}
+            />
             {renderCurrentView()}
         </div>
     );

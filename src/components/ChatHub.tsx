@@ -7,7 +7,7 @@ const ChatHub: React.FC = () => {
     const [selectedUser, setSelectedUser] = useState<User | null>(null);
     const [messagesByUser, setMessagesByUser] = useState<Record<string, ChatMessage[]>>({});
 
-    const currentUser = mockUsers[0]; // Assume logged-in user is always the first one
+    const currentUser = mockUsers[0];
 
     const handleSendMessage = (recipientId: string, messageText: string) => {
         const newMessage: ChatMessage = {
