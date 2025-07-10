@@ -3,9 +3,10 @@ import { mockUsers } from '../data/mockData';
 
 interface LoginProps {
     onLogin: (userId: string) => void;
+    toRegister: () => void;
 }
 
-const Login: React.FC<LoginProps> = ({ onLogin }) => {
+const Login: React.FC<LoginProps> = ({ onLogin, toRegister }) => {
     const [selectedUserId, setSelectedUserId] = useState<string>('');
 
     return (
@@ -29,6 +30,12 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
                 className="w-full bg-blue-600 text-white py-2 rounded disabled:opacity-50"
             >
                 Logg inn
+            </button>
+            <button
+                onClick={(toRegister)}
+                className="w-full text-blue-600 py-2 mt-2 "
+            >
+                Registrer ny bruker
             </button>
         </div>
     );
