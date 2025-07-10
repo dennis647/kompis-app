@@ -11,6 +11,7 @@ import Login from './components/Login';
 
 import { Mission, User } from './types';
 import { mockUsers } from './data/mockData';
+import RegisterUser from "./components/RegisterUser.tsx";
 
 function App() {
     const [currentView, setCurrentView] = useState<string>('home');  // Starter på hjem
@@ -81,11 +82,13 @@ function App() {
                     }} />
                 );
             case 'login':
-                return <Login onLogin={handleLogin} />;
+                return <Login onLogin={handleLogin} toRegister={() => setCurrentView('register')} />;
             default:
                 return <LandingPage onGetStarted={() => setCurrentView('marketplace')} onMissions={function (): void {
                     throw new Error('Function not implemented.');
                 }} />;
+            case 'register':
+                return <RegisterUser backToLogin={() => setCurrentView('login')} />;
         }
     };
 
