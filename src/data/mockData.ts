@@ -20,6 +20,7 @@ export const mockUsers: User[] = [
     {
         id: '1',
         name: 'Emma Johnson',
+        password: '123',
         email: 'emma@example.com',
         avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150',
         rating: 4.8,
@@ -29,6 +30,7 @@ export const mockUsers: User[] = [
     {
         id: '2',
         name: 'Alex Chen',
+        password: '123',
         email: 'alex@example.com',
         avatar: 'https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=150',
         rating: 4.9,
@@ -38,6 +40,7 @@ export const mockUsers: User[] = [
     {
         id: '3',
         name: 'Sofia Andersson',
+        password: '123',
         email: 'sofia@example.com',
         avatar: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=150',
         rating: 4.7,
@@ -47,6 +50,7 @@ export const mockUsers: User[] = [
     {
         id: '4',
         name: 'Dennis Jacob Brokking',
+        password: '123',
         email: 'dennis@example.com',
         avatar: dennisAvatar,
         rating: 4.7,
@@ -56,6 +60,7 @@ export const mockUsers: User[] = [
     {
         id: '5',
         name: 'Ola Normann',
+        password: '123',
         email: 'Ola@example.com',
         avatar: newUser,
         rating: 4.0,

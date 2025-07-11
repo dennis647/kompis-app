@@ -1,39 +1,50 @@
-import React, { useState } from 'react';
-import { mockUsers } from '../data/mockData';
+import React, { useState } from "react";
+import { loginUser } from "../data/userService";
 
 interface LoginProps {
-    onLogin: (userId: string) => void;
-    toRegister: () => void;
+    onLogin: (email: string, password: string) => void | Promise<void>;
+    onRegister: () => void;
 }
 
-const Login: React.FC<LoginProps> = ({ onLogin, toRegister }) => {
-    const [selectedUserId, setSelectedUserId] = useState<string>('');
+
+const Login: React.FC<LoginProps> = ({ onLogin, onRegister }) => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleLogin = async () => {
+        const user = await loginUser(email, password);
+        if (user) {
+            onLogin(email, password);
+        } else {
+            alert("Feil e-post eller passord.");
+        }
+    };
 
     return (
         <div className="max-w-md mx-auto mt-20 p-6 bg-white rounded shadow">
             <h2 className="text-xl font-bold mb-4">Logg inn</h2>
-            <select
-                value={selectedUserId}
-                onChange={(e) => setSelectedUserId(e.target.value)}
+            <input
+                className="w-full p-2 border rounded mb-2"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+                type="password"
                 className="w-full p-2 border rounded mb-4"
-            >
-                <option value="">Velg bruker</option>
-                {mockUsers.map((user) => (
-                    <option key={user.id} value={user.id}>
-                        {user.name}
-                    </option>
-                ))}
-            </select>
+                placeholder="Passord"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
             <button
-                onClick={() => selectedUserId && onLogin(selectedUserId)}
-                disabled={!selectedUserId}
-                className="w-full bg-blue-600 text-white py-2 rounded disabled:opacity-50"
+                onClick={handleLogin}
+                className="w-full bg-blue-600 text-white py-2 rounded"
             >
                 Logg inn
             </button>
             <button
-                onClick={(toRegister)}
-                className="w-full text-blue-600 py-2 mt-2 "
+                onClick={onRegister}
+                className="w-full text-blue-600 mt-2"
             >
                 Registrer ny bruker
             </button>

@@ -8,13 +8,13 @@ import ChatHub from './components/ChatHub';
 import MapView from './components/MapView';
 import Profile from './components/Profile';
 import Login from './components/Login';
+import RegisterUser from './components/RegisterUser';
 
 import { Mission, User } from './types';
-import { mockUsers } from './data/mockData';
-import RegisterUser from "./components/RegisterUser.tsx";
+import { loginUser } from './data/userService'; // ✅ Bruk Firebase login-funksjon
 
 function App() {
-    const [currentView, setCurrentView] = useState<string>('home');  // Starter på hjem
+    const [currentView, setCurrentView] = useState<string>('home');
     const [selectedMission, setSelectedMission] = useState<Mission | null>(null);
     const [currentUser, setCurrentUser] = useState<User | null>(null);
 
@@ -23,11 +23,14 @@ function App() {
         setSelectedMission(null);
     };
 
-    const handleLogin = (userId: string) => {
-        const user = mockUsers.find((u) => u.id === userId);
+    // ✅ Login med Firebase
+    const handleLogin = async (email: string, password: string) => {
+        const user = await loginUser(email, password);
         if (user) {
             setCurrentUser(user);
             setCurrentView('home');
+        } else {
+            alert('E-post eller passord stemmer ikke.');
         }
     };
 
@@ -57,9 +60,9 @@ function App() {
     const renderCurrentView = () => {
         switch (currentView) {
             case 'home':
-                return currentUser ? <LandingPage onGetStarted={() =>setCurrentView('marketplace')} onMissions={() => setCurrentView('marketplace')}  />
-                    :
-                    <LandingPage onGetStarted={() => setCurrentView('login')} onMissions={() => setCurrentView('marketplace')} />;
+                return currentUser
+                    ? <LandingPage onGetStarted={() => setCurrentView('marketplace')} onMissions={() => setCurrentView('marketplace')} />
+                    : <LandingPage onGetStarted={() => setCurrentView('login')} onMissions={() => setCurrentView('marketplace')} />;
             case 'marketplace':
                 return <Marketplace onMissionClick={handleMissionClick} />;
             case 'create':
@@ -69,26 +72,21 @@ function App() {
                     <MissionDetail mission={selectedMission} onBack={handleBack} onChat={handleChatOpen} />
                 ) : null;
             case 'chat':
-                // @ts-ignore
-                return currentUser ? <ChatHub currentUser={currentUser} /> : <Login onLogin={handleLogin} />;
+                return currentUser ? <ChatHub currentUser={currentUser} /> : <Login onLogin={handleLogin} onRegister={() => setCurrentView('register')} />;
             case 'map':
                 return <MapView onMissionClick={handleMissionClick} />;
             case 'profile':
                 return currentUser ? (
                     <Profile currentUser={currentUser} onLogout={handleLogout} />
                 ) : (
-                    <LandingPage onGetStarted={() => setCurrentView('marketplace')} onMissions={function (): void {
-                        throw new Error('Function not implemented.');
-                    }} />
+                    <LandingPage onGetStarted={() => setCurrentView('marketplace')} onMissions={() => setCurrentView('marketplace')} />
                 );
             case 'login':
-                return <Login onLogin={handleLogin} toRegister={() => setCurrentView('register')} />;
-            default:
-                return <LandingPage onGetStarted={() => setCurrentView('marketplace')} onMissions={function (): void {
-                    throw new Error('Function not implemented.');
-                }} />;
+                return <Login onLogin={handleLogin} onRegister={() => setCurrentView('register')} />;
             case 'register':
-                return <RegisterUser backToLogin={() => setCurrentView('login')} />;
+                return <RegisterUser backToLogin={() => setCurrentView('login')} onMissions={() => setCurrentView('marketplace')} />;
+            default:
+                return <LandingPage onGetStarted={() => setCurrentView('marketplace')} onMissions={() => setCurrentView('marketplace')} />;
         }
     };
 
