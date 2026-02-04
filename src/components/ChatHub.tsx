@@ -3,7 +3,11 @@ import Chat from './Chat'; // Make sure this points to your Chat component
 import { ChatMessage, User } from '../types';
 import { mockUsers } from '../data/mockData';
 
-const ChatHub: React.FC = () => {
+interface ChatHubProps {
+    currentUser: User;
+}
+
+const ChatHub: React.FC<ChatHubProps> = () => {
     const [selectedUser, setSelectedUser] = useState<User | null>(null);
     const [messagesByUser, setMessagesByUser] = useState<Record<string, ChatMessage[]>>({});
 

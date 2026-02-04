@@ -1,40 +1,42 @@
 // src/components/RegisterUser.tsx
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { addUser } from "../data/userService";
-import { User } from "../types";
+
 
 interface RegisterUserProps {
     backToLogin: () => void;
+    onMissions: () => void;
 }
 
-const RegisterUser: React.FC<RegisterUserProps> = ({ backToLogin }) => {
+const RegisterUser: React.FC<RegisterUserProps> = ({ backToLogin, onMissions }) => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [avatar, setAvatar] = useState("");
+    const [password, setPassword] = useState("");
     const [location, setLocation] = useState("");
 
-    const navigate = useNavigate();
 
     const handleRegister = async () => {
         try {
-            const newUser: Omit<User, "id" | "rating" | "completedJobs"> & {
+            const newUser: {
+                name: string;
+                email: string;
+                password: string;
+                location: string;
                 rating: number;
-                completedJobs: number;
+                completedJobs: number
             } = {
                 name,
                 email,
-                avatar,
+                password,
                 location,
                 rating: 0,
                 completedJobs: 0,
             };
 
             const id = await addUser(newUser);
-            alert(`User registered with ID: ${id}`);
+            alert(`Bruker registrert: ${name}`);
+            console.log("User registered:", id);
 
-            // Navigate back to login page after successful registration
-            navigate("/");
         } catch (error) {
             console.error("Error registering user:", error);
             alert("Failed to register user. Please try again.");
@@ -58,9 +60,9 @@ const RegisterUser: React.FC<RegisterUserProps> = ({ backToLogin }) => {
             />
             <input
                 className="w-full p-2 border rounded mb-2"
-                placeholder="Avatar URL"
-                value={avatar}
-                onChange={(e) => setAvatar(e.target.value)}
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
             />
             <input
                 className="w-full p-2 border rounded mb-4"
@@ -69,7 +71,7 @@ const RegisterUser: React.FC<RegisterUserProps> = ({ backToLogin }) => {
                 onChange={(e) => setLocation(e.target.value)}
             />
             <button
-                onClick={handleRegister}
+                onClick={async () => { await handleRegister(); onMissions(); }}
                 disabled={!name || !email}
                 className="w-full bg-blue-600 text-white py-2 rounded disabled:opacity-50"
             >
