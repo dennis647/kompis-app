@@ -12,7 +12,10 @@ export const addUser = async (user: {
     completedJobs: number
 }): Promise<string> => {
     const userRef = push(ref(db, 'users'));
-    const newUser: User = { ...user, id: userRef.key! };
+    const newUser: User = {
+        ...user, id: userRef.key!,
+        avatar: ''
+    };
     await set(userRef, newUser);
     return newUser.id;
 };
